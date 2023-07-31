@@ -1,0 +1,137 @@
+---
+title: "Decisions"
+output: learnr::tutorial
+runtime: shiny_prerendered
+---
+
+```{r setup-hide, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(learnr)
+```
+
+## Exam Marks
+Let's consider the dataset `gradebook2` again. The following code has been run to load the data and the libraries we'll need:
+
+```{r setup, include=TRUE, message = FALSE}
+library(tidyverse)
+
+gradebook2 <- read.csv("https://raw.githubusercontent.com/sta238/data/main/gradebook2.csv")
+```
+
+We want to compute a $95\%$ confidence interval for the mean of the exam marks. Let's use a few different methods and compare.
+
+### Assume exam marks are normally distributed
+
+Plot the exam marks to see if they look normally distributed. Include a histogram and KDE of the exam marks, along with a layer showing a normal distribution with appropriate arguments. Adjust options (e.g. colour, transparency, line type) and provide informative labels so that the different layers can be easily interpreted. 
+
+```{r plot-exam, exercise=TRUE}
+
+```
+
+Compute the $95\%$ confidence interval, assuming the data generating process for the exam marks follows a normal distribution.
+```{r CI-t, exercise=TRUE}
+
+# Compute the confidence interval:
+tibble(
+  "lower" = ,
+  "upper" = 
+)
+```
+
+
+
+### Assume n is sufficiently large 
+
+Compute the $95\%$ confidence interval, assuming the sample size is large enough that the Central Limit Theorem applies.
+```{r CI-norm, exercise=TRUE}
+
+
+# Compute the confidence interval:
+tibble(
+  "lower" = ,
+  "upper" = 
+)
+```
+
+
+### No extra assumptions
+
+Use the bootstrap principle to compute the $95\%$ confidence interval.
+
+```{r CI-boot, exercise=TRUE}
+set.seed(238)
+
+
+
+# Compute the confidence interval:
+tibble(
+  "lower" = ,
+  "upper" = 
+)
+```
+
+
+
+## Times
+
+For this section, I have generated a vector called `times` from an exponential distribution. 
+
+```{r setup-times}
+set.seed(238)
+
+times <- rexp(30, rate = 2)
+```
+
+
+### Confidence intervals
+
+Find a $95\%$ confidence interval for the mean, $\mu$, using an appropriate method, and use that to compute a $95\%$ confidence interval for $\lambda$.
+
+```{r CI-mu-lambda, exercise=TRUE, exercise.setup = "setup-times"}
+set.seed(238)
+
+
+CI_mu <- tibble(
+  "lower" = ,
+  "upper" = 
+)
+
+# The confidence interval for the mean:
+CI_mu
+
+# The confidence interval for lambda:
+tibble( 
+  "lower" = 1/CI_mu$upper,
+  "upper" = 1/CI_mu$lower
+)
+
+```
+
+### Testing claims
+
+Say someone is claiming that the true value of $\lambda$ is 3.5 / hour. 
+
+#### Likelihood ratio test
+
+Use a likelihood ratio test to determine if our data gives any evidence against this claim. Note that you'll need to compute the MLE and the likelihood ratio.
+
+```{r likelihood-ratio, exercise=TRUE, exercise.setup = "setup-times"}
+
+```
+
+
+#### t-test
+
+Use a bootstrap t-test to determine if our data gives any evidence against this claim.
+
+```{r t-test, exercise=TRUE, exercise.setup = "setup-times"}
+set.seed(238)
+
+
+```
+
+
+
+
+
+
