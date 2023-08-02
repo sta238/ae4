@@ -116,7 +116,26 @@ Say someone is claiming that the true value of $\lambda$ is 3.5 / hour.
 Use a likelihood ratio test to determine if our data gives any evidence against this claim. Note that you'll need to compute the MLE and the likelihood ratio.
 
 ```{r likelihood-ratio, exercise=TRUE, exercise.setup = "setup-times"}
+n <- 
 
+# Claim:
+lambda0 <-
+
+# Estimate:
+lambda_mle <- 
+
+# Define the log likelihood function
+loglikelihoodfcn <- function(lambda){
+  
+}
+
+# Compute the likelihood ratio
+LR <- exp(loglikelihoodfcn( ))/exp(loglikelihoodfcn( )) # add the appropriate arguments to each loglikelihoodfcn()
+
+
+# Do a likelihood ratio test to check if the data supports the claim
+lr <- 
+  
 ```
 
 
@@ -127,6 +146,29 @@ Use a bootstrap t-test to determine if our data gives any evidence against this 
 ```{r t-test, exercise=TRUE, exercise.setup = "setup-times"}
 set.seed(238)
 
+n <-
+B <- 10000
+
+# Claim:
+lambda0 <- 
+mu0 <- 
+
+# Data values:
+xbar <- 
+sn <- 
+
+tobs <- 
+
+#empirical bootstrap
+Tboot <- numeric(B)
+for (i in 1:B){
+  bootsamp <- sample(times, n, replace=TRUE) 
+  bootmean <- 
+  bootse <- 
+  Tboot[i] <- 
+}
+
+sum(abs(Tboot) >= abs(tobs) ) / B
 
 ```
 
